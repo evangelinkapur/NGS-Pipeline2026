@@ -1,0 +1,11 @@
+# Nextflow runtime files
+.nextflow/
+.nextflow.log*
+work/
+
+# Results and outputs
+results/
+
+# Editor & OS files
+.vscode/
+.DS_Store
