@@ -4,25 +4,16 @@ include { FASTQC_TRIMMED } from './modules/fastqc_trimmed'
 include { ALIGN }          from './modules/bwa_align'
 include { VARIANTS }       from './modules/bcftools_call'
 workflow WORKFLOW_MAIN {
-
     take:
-        fastq_input
-        ref_input
+    fastq
+    ref
 
     main:
-        raw_qc      = FASTQC_RAW(fastq_input)
+    FASTQC_RAW(fastq)
 
-        trimmed_fq  = CUTADAPT(fastq_input)
+    trimmed = CUTADAPT(fastq)
+    FASTQC_TRIMMED(trimmed)
 
-        trimmed_qc  = FASTQC_TRIMMED(trimmed_fq)
-
-        bam         = ALIGN(trimmed_fq, ref_input)
-
-        variants    = VARIANTS(bam, ref_input)
-
-    emit:
-        raw_qc
-        trimmed_qc
-        bam
-        variants
+    bam = ALIGN(trimmed, ref)
+    VARIANTS(bam, ref)
 }

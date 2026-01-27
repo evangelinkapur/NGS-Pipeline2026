@@ -11,6 +11,6 @@ process FASTQC_RAW {
 
     script:
     """
-    fastqc $fastq
+    ${params.fastqc} $fastq
     """
 }

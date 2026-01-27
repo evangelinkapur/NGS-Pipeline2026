@@ -1,16 +1,18 @@
 process FASTQC_TRIMMED {
-    
-    tag "${fastq.baseName}"
 
-    input: 
-    path fastq
-    
+    //tag "${fastq.baseName}"
+
+    input:
+        path trimmed
+
     output:
-    path "*.html"
-    path "*.zip"
+         path "*_fastqc.*"
+        //path "${fastq.baseName}_fastqc.html"
+        //path "${fastq.baseName}_fastqc.zip"
+        //path "${fastq.baseName}_fastqc"
 
     script:
     """
-    fastqc $fastq
+    ${params.fastqc} -o . $trimmed
     """
 }

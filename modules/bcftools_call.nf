@@ -1,19 +1,15 @@
 process VARIANTS {
-    tag "bcftools"
+    tag "${bam.baseName}"
 
     input: 
     path bam
-    path bai
     path ref
 
     output:
-    path "variants.vcf"
-    path "filtered_variants.vcf"
+    path "${bam.baseName}.vcf"
 
     script:
     """
-    bcftools mpileup -f $ref $bam > variants.bcf
-    bcftools call -mv variants.bcf > variants.vcf
-    bcftools filter -i 'QUAL>20' variants.vcf > filtered_variants.vcf
-    """
+    bcftools mpileup -f $ref $bam | bcftools call -mv -o ${bam.baseName}.vcf
+   """
 }

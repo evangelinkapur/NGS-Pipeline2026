@@ -1,5 +1,5 @@
 process CUTADAPT {
-
+     publishDir "results/cutadapt", mode: 'copy'
     tag "${fastq.baseName}"
 
     input:
@@ -10,6 +10,6 @@ process CUTADAPT {
 
     script:
     """
-    cutadapt -q 20 -o ${fastq.baseName}_trimmed.fastq $fastq
+    cutadapt -a AGATCGGAAGAGC -o ${fastq.baseName}_trimmed.fastq $fastq
     """
 }
