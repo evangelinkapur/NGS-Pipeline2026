@@ -2,7 +2,6 @@
 data/
 reference/
 scripts/
-work/
 
 # ---- Nextflow ----
 .work/

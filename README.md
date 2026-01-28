@@ -1,21 +1,34 @@
+# NGS Variant Calling Pipeline (Nextflow)
 
-# NGS Variant Calling Pipeline
+This repository contains a **modular single-end NGS variant calling pipeline**
+implemented using **Nextflow DSL2**.
+The pipeline performs quality control, adapter trimming, alignment, and variant
+calling using standard bioinformatics tools.
 
-This repository contains a **complete single-end NGS variant calling pipeline** implemented using standard bioinformatics tools.
-
----
-
-## Input files
-- fastq_test.fastq (single-end sequencing reads)
-
----
-
-## Reference genome
-- ref.fa (user-provided reference genome)
+This repository is designed to **track pipeline logic only**.
+Large input data and reference files are intentionally excluded from version
+control.
 
 ---
 
-## Tools used
+## Pipeline Overview
+
+**Input**
+- Single-end FASTQ files
+- Reference genome directory
+
+**Workflow Steps**
+1. Quality control of raw reads (FastQC)
+2. Adapter trimming (Cutadapt)
+3. Alignment to reference genome (BWA-MEM)
+4. BAM sorting and indexing (Samtools)
+5. Variant calling (BCFtools)
+
+---
+
+## Tools Used
+
+- Nextflow (DSL2)
 - FastQC
 - Cutadapt
 - BWA
@@ -24,47 +37,17 @@ This repository contains a **complete single-end NGS variant calling pipeline** 
 
 ---
 
-## Steps performed
+## Repository Structure
 
-1. Initial Quality Control 
-   Quality assessment of raw sequencing reads using FastQC.
-
-2. Adapter Trimming 
-   Removal of adapter sequences and low-quality bases using Cutadapt.
-
-3. Second Quality Control 
-   Quality reassessment of trimmed reads using FastQC.
-
-4. Alignment 
-   Alignment of trimmed reads to the reference genome using BWA-MEM.
-
-5. SAM to BAM Conversion 
-   Conversion of SAM alignment file to compressed BAM format using Samtools.
-
-6. BAM Sorting 
-   Sorting of BAM file based on genomic coordinates.
-
-7. Variant Calling 
-   Identification of SNPs and small INDELs using BCFtools.
-
-8. Variant Filtering 
-   Filtering of low-quality variants based on quality score thresholds.
-
----
-
-## Output files
-- FastQC HTML and ZIP reports
-- Trimmed FASTQ file
-- Aligned SAM and BAM files
-- Sorted BAM file
-- Raw and filtered VCF files
-
----
-
-## How to run
-
-```bash
-cd scripts
-chmod +x pipeline.sh
-./pipeline.sh
-```
+```text
+NGS-Pipeline2026/
+├── modules/
+│   ├── fastqc_raw.nf
+│   ├── cutadapt.nf
+│   ├── bwa_align.nf
+│   └── bcftools_call.nf
+├── main.nf
+├── workflow.nf
+├── nextflow.config
+├── README.md
+└── .gitignore
