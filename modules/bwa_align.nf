@@ -9,6 +9,7 @@ process ALIGN {
 
     output:
         path "${fastq.baseName}.bam"
+        path "${fastq.baseName}.bam.bai"
 
     script:
     """
