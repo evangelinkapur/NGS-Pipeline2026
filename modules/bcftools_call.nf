@@ -10,6 +10,6 @@ process VARIANTS {
 
     script:
     """
-    bcftools mpileup -f ${params.ref} $bam | bcftools call -mv -o ${bam.baseName}.vcf
+    bcftools mpileup -f $ref $bam | bcftools call -mv -o ${bam.baseName}.vcf
    """
 }
