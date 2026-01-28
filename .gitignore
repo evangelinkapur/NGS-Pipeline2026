@@ -10,3 +10,6 @@ results/
 .vscode/
 .DS_Store
 test.bam
+data/
+reference/
+scripts/
