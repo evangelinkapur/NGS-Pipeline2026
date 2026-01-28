@@ -9,3 +9,4 @@ results/
 # Editor & OS files
 .vscode/
 .DS_Store
+test.bam
