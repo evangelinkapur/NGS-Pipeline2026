@@ -1,15 +1,17 @@
 process VARIANTS {
+
     tag "${bam.baseName}"
 
-    input: 
-    path bam
-    path ref
+    input:
+        tuple path(bam), path(bai)
+        path ref_dir
 
     output:
-    path "${bam.baseName}.vcf"
+        path "${bam.baseName}.vcf"
 
     script:
     """
-    bcftools mpileup -f $ref $bam | bcftools call -mv -o ${bam.baseName}.vcf
-   """
+    bcftools mpileup -Ou -f ${ref_dir}/ref.fa $bam | \
+    bcftools call -mv -Ov -o ${bam.baseName}.vcf
+    """
 }

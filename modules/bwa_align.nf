@@ -1,18 +1,20 @@
 process ALIGN {
-     publishDir "results/trimmed", mode: 'copy'
-     
-     tag "${fastq.baseName}"
+
+    tag "${fastq.baseName}"
 
     input:
         path fastq
-        val ref
+        path ref_dir
 
     output:
-        path "${fastq.baseName}.bam"
+        tuple path("${fastq.baseName}.bam"),
+              path("${fastq.baseName}.bam.bai")
 
     script:
     """
-    ${params.bwa} mem $ref $fastq | ${params.samtools} sort -o ${fastq.baseName}.bam
+    ${params.bwa} mem ${ref_dir}/ref.fa $fastq \
+        | ${params.samtools} sort -o ${fastq.baseName}.bam
+
     ${params.samtools} index ${fastq.baseName}.bam
     """
 }
