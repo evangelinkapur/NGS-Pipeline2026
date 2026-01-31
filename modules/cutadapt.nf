@@ -10,6 +10,6 @@ process CUTADAPT {
 
     script:
     """
-    cutadapt -a AGATCGGAAGAGC -o ${fastq.baseName}_trimmed.fastq $fastq
+    ${params.cutadapt} -a AGATCGGAAGAGC -o ${fastq.baseName}_trimmed.fastq $fastq
     """
 }

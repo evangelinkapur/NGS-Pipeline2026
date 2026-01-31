@@ -24,8 +24,15 @@ control.
 4. BAM sorting and indexing (Samtools)
 5. Variant calling (BCFtools)
 
-Here’s a **very short, clean version** you can paste into **README.md** 👇
+---
 
+## Clone the Repository
+
+Clone the GitHub repository and move into the project directory:
+
+```bash
+git clone https://github.com/evangelinkapur/NGS-Pipeline2026.git
+cd NGS-Pipeline2026
 ---
 
 ### How to Run
@@ -38,6 +45,8 @@ This pipeline runs using **Nextflow (DSL2)** and **locally installed tools**.
 
 **Run the pipeline:**
 ```
+conda env create -f environment.yml
+conda activate nextflow_pipeline
 nextflow run main.nf
 ```
 
@@ -60,13 +69,16 @@ nextflow run main.nf -resume
 
 ```text
 NGS-Pipeline2026/
+│
+├── main.nf
+├── nextflow.config
+├── environment.yml  
+│
 ├── modules/
 │   ├── fastqc_raw.nf
 │   ├── cutadapt.nf
 │   ├── bwa_align.nf
 │   └── bcftools_call.nf
-├── main.nf
-├── workflow.nf
-├── nextflow.config
-├── README.md
-└── .gitignore
+│
+└── workflows/
+    └── workflow.nf
