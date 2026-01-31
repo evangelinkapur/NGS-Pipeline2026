@@ -43,7 +43,7 @@ Create and activate the Conda environment using the provided `environment.yml` f
 
 ```bash
 conda env create -f environment.yml
-conda activate nextflow-qc
+conda activate nextflow_pipeline
 ```
 
 ---
