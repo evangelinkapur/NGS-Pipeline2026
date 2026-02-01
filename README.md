@@ -95,7 +95,7 @@ NGS-Pipeline2026/
 │   ├── fastqc_raw.nf
 │   ├── cutadapt.nf
 │   ├── bwa_align.nf
-│   └── bcftools_call.nf
+│   └── variant_call.nf
 │
 └── workflows/
     └── workflow.nf

@@ -11,4 +11,3 @@ dependencies:
   - bwa=0.7.17
   - samtools=1.21
   - bcftools=1.21
-  - openjdk
