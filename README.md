@@ -61,9 +61,9 @@ conda activate nextflow_pipeline
 
 Install the required tools individually:
 ```bash
-conda create -n bnf -c bioconda -c conda-forge \
+conda create -n nextflow_pipeline -c bioconda -c conda-forge \
     nextflow fastqc cutadapt bwa samtools bcftools multiqc
-conda activate bnf
+conda activate nextflow_pipeline
 ```
 
 ---
@@ -87,7 +87,6 @@ Place your files in the appropriate directories:
 Before running the pipeline, index your reference:
 ```bash
 bwa index reference/ref.fa
-samtools faidx reference/ref.fa
 ```
 
 ---

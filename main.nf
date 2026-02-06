@@ -1,4 +1,4 @@
-params.fastq = "data/fastq_test.fastq"  // Specify exact file
+params.fastq = "data/fastq_test.fastq"  
 params.ref   = "reference/ref.fa"
 
 include { WORKFLOW_MAIN } from './workflows/workflow'
