@@ -17,14 +17,3 @@ results/
 *.bai
 *.vcf
 *.vcf.gz
-
-# ---- Logs ----
-*.log
-
-# ---- OS ----
-.DS_Store
-Thumbs.db
-
-# ---- Editors ----
-.vscode/
-.idea/
