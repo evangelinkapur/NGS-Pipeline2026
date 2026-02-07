@@ -79,8 +79,8 @@ mkdir -p data reference results
 
 Place your files in the appropriate directories:
 
-- **Raw reads**: `data/fastq_test.fastq` (Illumina FASTQ)
-- **Reference genome**: `reference/ref.fa` (FASTA format)
+- **Raw reads**: `data/fastq_test.fastq` 
+- **Reference genome**: `reference/ref.fa` 
 
 ### 3. Index the Reference Genome
 
